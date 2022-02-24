@@ -59,4 +59,9 @@ public function fetch_employ($employid)
 
   return $this->db->get('employee_details')->result();
 }
+public function delete_employ($employid)
+{
+
+     $this->db->delete('employee_details', array('employee_details.id' =>  $employid));
+}
 }

@@ -93,7 +93,7 @@ $id = $this->Employee_model->create($post_data);
        $sub_array[] = $row->email;  
        $sub_array[] = $row->desigination;
        $sub_array[] = '<a href="'.base_url().'employee/edit_employee/'.$row->id.'"><button type="button" name="update" id="'.$row->id.'" class="btn btn-warning btn-xs update">Update</button></a>';  
-       $sub_array[] = '<button type="button" name="delete" id="'.$row->id.'" class="btn btn-danger btn-xs delete">Delete</button>';  
+       $sub_array[] = '<a href="'.base_url().'employee/delete_employee/'.$row->id.'"><button type="button" name="delete" id="'.$row->id.'" class="btn btn-danger btn-xs delete">Delete</button></a>';  
        $data[] = $sub_array;  
   }  
   $output = array(  
@@ -114,6 +114,18 @@ $id = $this->Employee_model->create($post_data);
       
       $this->load->view( 'header');
       $this->load->view('edit_employee', $this->data);
+       $this->load->view('footer');
+     
+ } 
+ function delete_employee($id)  
+ {  
+ 
+   $employid = $id;
+ 
+   $employ = $this->Employee_model->delete_employ($employid);  
+      
+      $this->load->view( 'header');
+      $this->load->view('employee_list', $employ);
        $this->load->view('footer');
      
  } 
