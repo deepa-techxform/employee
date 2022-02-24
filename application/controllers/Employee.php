@@ -84,14 +84,14 @@ $data2['id'] = $id;
        
        $this->email->initialize($config);
        
-                       $this->email->from('info@employee.in', 'Employee');
-                       $this->email->to($email);
-                       $this->email->subject('Registration Successfull');
-                       $mesg = $this->load->view('email_templates/emailconformation',$data2,true);
+                      //  $this->email->from('info@employee.in', 'Employee');
+                      //  $this->email->to($email);
+                      //  $this->email->subject('Registration Successfull');
+                      //  $mesg = $this->load->view('email_templates/emailconformation',$data2,true);
                       
-                       $this->email->message($mesg);
+                      //  $this->email->message($mesg);
                        
-                       $this->email->send();
+                      //  $this->email->send();
 // ****************Mailing*******************
   }
   $this->load->view( 'header');
@@ -114,7 +114,7 @@ $data2['id'] = $id;
   foreach($fetch_data as $row)  
   {  
        $sub_array = array();  
-       $sub_array[] = '<img src="'.base_url().'upload/images/'.$row->photo.'" class="img-thumbnail" width="50" height="35" />';  
+       $sub_array[] = '<img src="'.base_url().'uploads/images/'.$row->photo.'" class="img-thumbnail" width="50" height="35" />';  
        $sub_array[] = $row->name;  
        $sub_array[] = $row->email;  
        $sub_array[] = $row->desigination;
@@ -138,8 +138,10 @@ $data2['id'] = $id;
    $this->data['employid'] = $employid;
    $desigination = $this->Employee_model->getdesigination();
   $this->data['desigination'] = $desigination;
-   $this->data['employ'] = $this->Employee_model->fetch_employ($employid);  
-      
+   $this->data['employ'] = $this->Employee_model->fetch_employ($employid); 
+   $employ = $this->Employee_model->fetch_employ($employid);  
+  //  print_r($employ );
+  //  exit();
       $this->load->view( 'header');
       $this->load->view('edit_employee', $this->data);
        $this->load->view('footer');

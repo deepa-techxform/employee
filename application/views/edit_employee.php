@@ -1,6 +1,3 @@
-
-<!-- <link rel="stylesheet" href="<?php echo base_url('assets/css/image_style.css'); ?>"> -->
-
 <body>
 
 <div class="container">
@@ -10,7 +7,9 @@
        
         <hr>
         <?php
-                                        foreach ($employ as $row) { ?>
+                                        foreach ($employ as $row) { 
+                                     
+                                          ?>
         <form class="container" id="needs-validation" enctype="multipart/form-data" action="<?php echo base_url('Employee/update_employee/'. $employid); ?>" method="POST" novalidate>
           <div class="row">
             <div class="col-lg-6 col-sm-6 col-12">
@@ -58,19 +57,13 @@ foreach ($desigination as $row) { ?>
           </div>
           <div class="row">
           <div class="form-group">
-          <div class="wrapper">
-  <div class="box">
-    <div class="js--image-preview"></div>
-    <div class="upload-options">
-      <label>
-        <input type="file" class="image-upload"   name="empoly_image" accept="image/*" />
-      </label>
-    </div>
-  </div>
-
- </div>
+          <div class="form-group">   
+    <label for="password" class="form-group"></label>
+    <input id="image" type="file" name="empoly_image" onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" >
+    <img id="blah"  width="50" height="50" />
 </div>
-          </div>
+  </div>
+</div>
      
           <hr>
           <div class="row">
