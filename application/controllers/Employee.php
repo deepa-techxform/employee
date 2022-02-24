@@ -68,6 +68,31 @@ class Employee extends CI_Controller {
   // exit();
 
 $id = $this->Employee_model->create($post_data);
+
+// *****************Mailing****************** 
+$email = $this->input->post('email');
+/*$data2['username'] = $this->input->post('username');
+$data2['name'] = $this->input->post('shop_name');*/
+$data2['id'] = $id;
+       
+                       $this->load->library('email');
+                       $config=array(
+       'charset'=>'utf-8',
+       'wordwrap'=> TRUE,
+       'mailtype' => 'html'
+       );
+       
+       $this->email->initialize($config);
+       
+                       $this->email->from('info@employee.in', 'Employee');
+                       $this->email->to($email);
+                       $this->email->subject('Registration Successfull');
+                       $mesg = $this->load->view('email_templates/emailconformation',$data2,true);
+                      
+                       $this->email->message($mesg);
+                       
+                       $this->email->send();
+// ****************Mailing*******************
   }
   $this->load->view( 'header');
      $this->load->view('employee_list');
