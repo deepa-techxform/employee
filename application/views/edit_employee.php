@@ -7,10 +7,11 @@
     <div class="row">
       <div class="offset-lg-2 col-lg-8 col-sm-8 col-8 border rounded main-section">
         <h3 class="text-center text-inverse">Edit Employee Details</h3>
+       
         <hr>
         <?php
                                         foreach ($employ as $row) { ?>
-        <form class="container" id="needs-validation" enctype="multipart/form-data" action="<?php echo base_url('Employee/create_employee'); ?>" method="POST" novalidate>
+        <form class="container" id="needs-validation" enctype="multipart/form-data" action="<?php echo base_url('Employee/update_employee/'. $employid); ?>" method="POST" novalidate>
           <div class="row">
             <div class="col-lg-6 col-sm-6 col-12">
                <div class="form-group">
@@ -38,7 +39,7 @@
               <div class="form-group">
                 <label class="text-inverse" for="select-menu">Designation *</label>
                 <select class="custom-select d-block form-control" id="image" name="desigination"  required>
-                  <option value=""><?php echo $row->desigination ?></option>
+                  <option value="<?php echo $row->desigination ?>"><?php echo $row->desigination ?></option>
                   <?php
 
 foreach ($desigination as $row) { ?>

@@ -25,7 +25,7 @@
 <body>
 <!-- partial:index.partial.html -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand" href="#">Sidebar Nav</a>
+  <a class="navbar-brand" href="#">Employee</a>
   <button
     class="navbar-toggler"
     type="button"
@@ -41,7 +41,7 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto sidenav" id="navAccordion">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
       </li>
       
       <li class="nav-item">

@@ -75,6 +75,7 @@ $id = $this->Employee_model->create($post_data);
  }
  public function employee_list()
  {
+
     $this->load->view( 'header');
   $this->load->view('employee_list', array());
    $this->load->view('footer');
@@ -109,7 +110,9 @@ $id = $this->Employee_model->create($post_data);
  {  
  
    $employid = $id;
- 
+   $this->data['employid'] = $employid;
+   $desigination = $this->Employee_model->getdesigination();
+  $this->data['desigination'] = $desigination;
    $this->data['employ'] = $this->Employee_model->fetch_employ($employid);  
       
       $this->load->view( 'header');
@@ -129,4 +132,53 @@ $id = $this->Employee_model->create($post_data);
        $this->load->view('footer');
      
  } 
+ public function update_employee($employid)
+ {
+  $this->load->library(array('form_validation'));
+  $this->form_validation->set_rules('name', 'Name', 'trim');
+  $this->form_validation->set_rules('email', 'Email', 'trim|required');
+  $this->form_validation->set_rules('desigination', 'Designation', 'trim|required');
+
+
+  if ($this->form_validation->run() === TRUE) {
+
+    $fileData = [];
+    $fileName = 'nofile';
+    if (!empty($_FILES['empoly_image']['name'])) {
+    $this->load->helper(array('form', 'url'));
+    $config['upload_path']          = './uploads/images/';
+    $config['allowed_types']        = 'gif|jpg|png|pdf';
+
+    $this->load->library('upload', $config);
+      if ( ! $this->upload->do_upload('empoly_image'))
+      {
+          $fileData = array('error' => $this->upload->display_errors());
+          echo json_encode(["status" => false, "error" => $fileData]);
+          exit();
+      }
+      else
+      {
+          $fileData = array('upload_data' => $this->upload->data());
+      }
+      if (!array_key_exists('error', $fileData)) {
+        $fileName = $fileData['upload_data']['file_name'];
+      }
+    }
+
+    $post_data = array(
+      
+                
+      'name' => $this->input->post('name'),
+      'email' => $this->input->post('email'),
+      'desigination' => $this->input->post('desigination'),
+      'photo' => $fileName,
+
+  );
+  $this->Employee_model->update($post_data, $employid);
+
+  }
+  $this->load->view( 'header');
+     $this->load->view('employee_list');
+     $this->load->view('footer');
+ }
 }
