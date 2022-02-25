@@ -14,7 +14,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Reset Your PK Agro Password</title>
+
   <!--[if !mso]>
       <!-- -->
   <link href='https://fonts.googleapis.com/css?family=Asap:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
@@ -358,7 +358,7 @@
                                 <h1 class="null" style='color: #2a2a2a; font-family: "Asap", Helvetica,
  sans-serif; font-size: 32px; font-style: normal; font-weight: bold; line-height:
  125%; letter-spacing: 2px; text-align: center; display: block; margin: 0;
- padding: 0'><span >Welcome To PKagro</span></h1>
+ padding: 0'><span >Welcome To Employee</span></h1>
 
 
                               
